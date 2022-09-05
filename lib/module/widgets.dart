@@ -57,3 +57,65 @@ class DoneButton extends StatelessWidget {
     );
   }
 }
+
+class MEditFile extends StatelessWidget {
+  final String hintText;
+  final Icon iconData;
+  final Function(String? val) onChanged;
+  final String? Function(String? onChange)? validator;
+  const MEditFile(
+      {super.key,
+      required this.onChanged,
+      required this.validator,
+      required this.hintText,
+      required this.iconData});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+        style: const TextStyle(fontSize: 18, color: Colors.grey),
+        onChanged: onChanged,
+        validator: validator,
+        decoration: InputDecoration(
+            prefixIcon: iconData,
+            fillColor: Colors.grey.withOpacity(0.1),
+            filled: true,
+            enabled: true,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: Colors.grey.withOpacity(0.0), width: 0),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            contentPadding: const EdgeInsets.all(20),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8), gapPadding: 18),
+            labelText: hintText,
+            hintStyle: const TextStyle(fontSize: 16, color: Colors.black),
+            labelStyle: TextStyle(
+                color: Colors.black.withOpacity(0.4),
+                fontSize: 16,
+                fontWeight: FontWeight.w500)),
+        obscureText: false);
+  }
+}
+
+class SmallIconButton extends StatelessWidget {
+  final String addresImage;
+  const SmallIconButton({super.key, required this.addresImage});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 80,
+      height: 50,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(color: Theme.of(context).dividerColor)),
+      child: Image.asset(addresImage, width: 30),
+    );
+  }
+}
