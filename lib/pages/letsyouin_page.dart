@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_firebase/module/extension.dart';
 import 'package:lottie/lottie.dart';
 
 class LetsYouIm extends StatelessWidget {
@@ -16,7 +17,10 @@ class LetsYouIm extends StatelessWidget {
           LottieBuilder.asset('assets/lottie/welcome.json',
               width: 300, height: 300),
           const SizedBox(height: 20),
-          const Text('Let\'s you in')
+          Text(
+            'Let\'s you in',
+            style: context.textStyle.titleLarge,
+          )
         ],
       ),
     );
