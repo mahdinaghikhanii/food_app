@@ -28,8 +28,8 @@ class LoginPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Center(
-                      child: SvgPicture.asset(
-                        'assets/svg/icon_app.svg',
+                      child: Image.asset(
+                        'assets/img/icon_app.png',
                         width: 140,
                       ),
                     ),
