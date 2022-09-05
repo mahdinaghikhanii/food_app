@@ -77,27 +77,28 @@ class MEditFile extends StatelessWidget {
         onChanged: onChanged,
         validator: validator,
         decoration: InputDecoration(
-            prefixIcon: iconData,
-            fillColor: Colors.grey.withOpacity(0.1),
-            filled: true,
-            enabled: true,
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: Colors.grey.withOpacity(0.0), width: 0),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            contentPadding: const EdgeInsets.all(20),
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8), gapPadding: 18),
-            labelText: hintText,
-            hintStyle: const TextStyle(fontSize: 16, color: Colors.black),
-            labelStyle: TextStyle(
-                color: Colors.black.withOpacity(0.4),
-                fontSize: 16,
-                fontWeight: FontWeight.w500)),
+          prefixIcon: iconData,
+          fillColor: Colors.grey.withOpacity(0.1),
+          filled: true,
+          enabled: true,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: Colors.grey.withOpacity(0.0), width: 0),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          contentPadding: const EdgeInsets.all(20),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8), gapPadding: 18),
+          labelText: hintText,
+          hintStyle: const TextStyle(fontSize: 16, color: Colors.black),
+          labelStyle: context.textStyle.labelMedium!.copyWith(
+            color: Colors.black.withOpacity(0.4),
+            fontSize: 16,
+          ),
+        ),
         obscureText: false);
   }
 }

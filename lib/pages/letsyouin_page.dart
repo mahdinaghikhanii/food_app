@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_firebase/module/extension.dart';
 import 'package:food_firebase/module/widgets.dart';
+import 'package:food_firebase/pages/auth/login_page.dart';
 import 'package:food_firebase/pages/auth/register_page.dart';
 import 'package:lottie/lottie.dart';
 
@@ -64,7 +65,11 @@ class LetsYouIm extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        DoneButton(text: "Sign in with email", ontap: () {}),
+                        DoneButton(
+                            text: "Sign in with email",
+                            ontap: () {
+                              context.nextPage(const LoginPage());
+                            }),
                         const SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
