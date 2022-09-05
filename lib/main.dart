@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart' show Firebase;
+import 'package:food_firebase/pages/auth/login_page.dart';
+import 'package:food_firebase/pages/letsyouin_page.dart';
+import 'package:food_firebase/theme/config_theme.dart';
 
 import 'firebase_options.dart';
 
@@ -17,20 +20,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
+      theme: ConfigTheme().themeData(),
+      home: const LetsYouIm(),
     );
   }
 }
