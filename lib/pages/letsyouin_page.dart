@@ -11,17 +11,30 @@ class LetsYouIm extends StatelessWidget {
       appBar: AppBar(
         leading: InkWell(onTap: () {}, child: const Icon(Icons.arrow_back)),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          LottieBuilder.asset('assets/lottie/welcome.json',
-              width: 300, height: 300),
-          const SizedBox(height: 20),
-          Text(
-            'Let\'s you in',
-            style: context.textStyle.titleLarge,
-          )
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: LottieBuilder.asset('assets/lottie/welcome.json',
+                  width: 300, height: 300),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Let\'s you in',
+              style: context.textStyle.titleLarge,
+            ),
+            Container(
+              width: double.infinity,
+              height: 40,
+              child: Row(
+                children: [],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

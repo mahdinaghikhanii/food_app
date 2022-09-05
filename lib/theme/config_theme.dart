@@ -11,8 +11,9 @@ class ConfigTheme {
         scaffoldBackgroundColor: Colors.white,
         textTheme: const TextTheme(
             titleLarge: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
+                fontFamily: "Montserrat",
+                fontWeight: FontWeight.w700,
+                fontSize: 35,
                 color: Colors.black)));
   }
 }
