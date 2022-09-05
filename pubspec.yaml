@@ -92,6 +92,8 @@ flutter:
            weight: 700
          - asset: assets/fonts/Montserrat-Regular.otf
            weight: 300
+         - asset: assets/fonts/Montserrat-Medium.otf
+           weight: 500
        
   #         style: italic
   #   - family: Trajan Pro
