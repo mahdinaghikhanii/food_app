@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-import 'pages/letsyouin_page.dart';
+import 'package:food_firebase/pages/onboard_page.dart';
 import 'theme/config_theme.dart';
 
 import 'firebase_options.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ConfigTheme().themeData(),
-      home: const LetsYouIm(),
+      home: const OnBoardPage(),
     );
   }
 }

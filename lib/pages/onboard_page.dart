@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_firebase/module/extension.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:lottie/lottie.dart';
 
 class OnBoardPage extends StatelessWidget {
   const OnBoardPage({super.key});
@@ -8,24 +8,39 @@ class OnBoardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntroductionScreen(
-      globalBackgroundColor: Colors.grey.shade800,
-      overrideNext: Text('', style: TextStyle(color: Colors.grey.shade800)),
+      globalBackgroundColor: Colors.white,
+
       isTopSafeArea: true, // Safe Area to avoid overlaps with the status bar
       showDoneButton: true,
 
-      done: const Text('done', style: TextStyle(color: Colors.white)),
+      done: Text('done',
+          style: context.textStyle.labelMedium!.copyWith(color: Colors.white)),
 
       doneStyle: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF3AA63F)),
       ),
       //doneStyle: ButtonStyle(),
-      back: const Text("Back", style: TextStyle(color: Colors.white)),
-      next: const Icon(Icons.arrow_forward),
-      nextFlex: 0,
+
+      //rtl: true, // Display as right-to-left
+
+      back: const Icon(Icons.arrow_back),
+      backStyle: ButtonStyle(
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF3AA63F)),
+      ),
+
+      next: Text(
+        "Next",
+        style: context.textStyle.labelMedium!.copyWith(color: Colors.white),
+      ),
+      nextStyle: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all<Color>(const Color(0xFF3AA63F))),
 
       skipStyle: ButtonStyle(
           backgroundColor:
-              MaterialStateProperty.all<Color>(Colors.grey.shade800)),
+              MaterialStateProperty.all<Color>(const Color(0xFF3AA63F))),
       showNextButton: true,
       dotsDecorator: const DotsDecorator(
         size: Size(10.0, 10.0),
@@ -35,60 +50,43 @@ class OnBoardPage extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
-      dotsContainerDecorator: const ShapeDecoration(
-        color: Colors.black87,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        ),
-      ),
+
       onDone: () {
         /// going login screans
         ///
       },
-
-      // A skip button to skip those pages(some prefer some doesn't)
       showSkipButton: true,
-
-      skip: const Text('Skip', style: TextStyle(color: Colors.white)),
-
-      // Same here, if the user skips - redirects to loginPage
-
-      // Now pages expect a list of PageViewModel
-      // That's what we have added here
+      skip: Text(
+        'Skip',
+        style: context.textStyle.labelMedium!.copyWith(color: Colors.white),
+      ),
       pages: [
         PageViewModel(
-          image: Lottie.asset('assets/img/food.png',
-              fit: BoxFit.contain, height: 400),
+          image: Image.asset('assets/img/food.png',
+              fit: BoxFit.contain, height: 300),
           body: "Freedom talk to any person with assured privacy",
           title: "Order for Food",
-          decoration: const PageDecoration(
-              titleTextStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22),
-              bodyTextStyle: TextStyle(color: Colors.black, fontSize: 18)),
+          decoration: PageDecoration(
+              titleTextStyle: context.textStyle.titleLarge!
+                  .copyWith(color: const Color(0xFF3AA63F))),
           // title:
         ),
         PageViewModel(
-          image: Lottie.asset("assets/img/payment.png", height: 300),
-          body: "Send text, images, videos and even documents to your friends",
-          title: "Easy Payment",
-          decoration: const PageDecoration(
-              titleTextStyle: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22),
-              bodyTextStyle: TextStyle(color: Colors.black, fontSize: 18)),
-        ),
+            image: Image.asset("assets/img/payment.png", height: 300),
+            body:
+                "Send text, images, videos and even documents to your friends",
+            title: "Easy Payment",
+            decoration: PageDecoration(
+                titleTextStyle: context.textStyle.titleLarge!
+                    .copyWith(color: const Color(0xFF3AA63F)))),
         PageViewModel(
-          image: Lottie.asset("assets/img/delivery.png", height: 400),
+          image: Image.asset("assets/img/delivery.png", height: 400),
           body: "Fast Delivery",
-          decoration: const PageDecoration(
-              titleTextStyle: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22),
-              bodyTextStyle: TextStyle(color: Colors.black, fontSize: 18)),
+          title: "Fast Delivery",
+          decoration: PageDecoration(
+              titleTextStyle: context.textStyle.titleLarge!
+                  .copyWith(color: const Color(0xFF3AA63F)),
+              bodyTextStyle: context.textStyle.titleMedium!.copyWith()),
         ),
       ],
     );
