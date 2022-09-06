@@ -10,4 +10,8 @@ extension BuildExtension on BuildContext {
   void backPag() {
     Navigator.pop(this);
   }
+
+  void nextPageAndRep(Widget child) {
+    Navigator.push(this, MaterialPageRoute(builder: (context) => child));
+  }
 }

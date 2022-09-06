@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_firebase/module/extension.dart';
+import '../module/extension.dart';
+import 'letsyouin_page.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class OnBoardPage extends StatelessWidget {
@@ -13,8 +14,12 @@ class OnBoardPage extends StatelessWidget {
       isTopSafeArea: true, // Safe Area to avoid overlaps with the status bar
       showDoneButton: true,
 
-      done: Text('done',
-          style: context.textStyle.labelMedium!.copyWith(color: Colors.white)),
+      done: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text('done',
+            style:
+                context.textStyle.labelMedium!.copyWith(color: Colors.white)),
+      ),
 
       doneStyle: ButtonStyle(
         backgroundColor:
@@ -30,9 +35,12 @@ class OnBoardPage extends StatelessWidget {
             MaterialStateProperty.all<Color>(const Color(0xFF3AA63F)),
       ),
 
-      next: Text(
-        "Next",
-        style: context.textStyle.labelMedium!.copyWith(color: Colors.white),
+      next: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          "Next",
+          style: context.textStyle.labelMedium!.copyWith(color: Colors.white),
+        ),
       ),
       nextStyle: ButtonStyle(
           backgroundColor:
@@ -52,13 +60,15 @@ class OnBoardPage extends StatelessWidget {
       ),
 
       onDone: () {
-        /// going login screans
-        ///
+        context.nextPage(const LetsYouIm());
       },
       showSkipButton: true,
-      skip: Text(
-        'Skip',
-        style: context.textStyle.labelMedium!.copyWith(color: Colors.white),
+      skip: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Skip',
+          style: context.textStyle.labelMedium!.copyWith(color: Colors.white),
+        ),
       ),
       pages: [
         PageViewModel(

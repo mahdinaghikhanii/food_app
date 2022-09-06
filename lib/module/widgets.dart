@@ -4,27 +4,34 @@ import 'extension.dart';
 class ContinueWithButton extends StatelessWidget {
   final String iconAddres;
   final String text;
+  final VoidCallback ontap;
   const ContinueWithButton(
-      {super.key, required this.iconAddres, required this.text});
+      {super.key,
+      required this.iconAddres,
+      required this.text,
+      required this.ontap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(color: Colors.grey.shade300.withOpacity(0.8))),
-      height: 60,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(iconAddres, width: 40),
-          const SizedBox(width: 20),
-          Text(
-            'Continue with $text',
-            style: context.textStyle.labelMedium!.copyWith(fontSize: 16),
-          ),
-        ],
+    return GestureDetector(
+      onTap: ontap,
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: Colors.grey.shade300.withOpacity(0.8))),
+        height: 60,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(iconAddres, width: 40),
+            const SizedBox(width: 20),
+            Text(
+              'Continue with $text',
+              style: context.textStyle.labelMedium!.copyWith(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -119,4 +126,19 @@ class SmallIconButton extends StatelessWidget {
       child: Image.asset(addresImage, width: 30),
     );
   }
+}
+
+void showSnackbar(context, color, message) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(
+        message,
+        style: const TextStyle(fontSize: 14),
+      ),
+      backgroundColor: color,
+      duration: const Duration(seconds: 2),
+      action: SnackBarAction(
+        label: "Ok",
+        onPressed: () {},
+        textColor: Colors.white,
+      )));
 }

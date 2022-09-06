@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_firebase/module/extension.dart';
-import 'package:food_firebase/module/widgets.dart';
-import 'package:food_firebase/pages/auth/login_page.dart';
-import 'package:food_firebase/pages/auth/register_page.dart';
+import '../module/extension.dart';
+import '../module/widgets.dart';
+import 'auth/login_page.dart';
+import 'auth/register_page.dart';
+import 'home_page.dart';
+import '../services/auth_service.dart';
 import 'package:lottie/lottie.dart';
 
 class LetsYouIm extends StatelessWidget {
@@ -12,7 +14,11 @@ class LetsYouIm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: InkWell(onTap: () {}, child: const Icon(Icons.arrow_back)),
+        leading: InkWell(
+            onTap: () {
+              context.backPag();
+            },
+            child: const Icon(Icons.arrow_back)),
       ),
       body: SafeArea(
         child: Padding(
@@ -40,12 +46,18 @@ class LetsYouIm extends StatelessWidget {
                               .copyWith(fontSize: 38),
                         ),
                         const SizedBox(height: 30),
-                        const ContinueWithButton(
+                        ContinueWithButton(
                             iconAddres: 'assets/icon/google.png',
-                            text: 'Google'),
+                            text: 'Google',
+                            ontap: () {
+                              AuthServices().signInWithGoogle().then((value) =>
+                                  context.nextPageAndRep(const HomePage()));
+                            }),
                         const SizedBox(height: 15),
-                        const ContinueWithButton(
-                            iconAddres: 'assets/icon/apple.png', text: 'apple'),
+                        ContinueWithButton(
+                            iconAddres: 'assets/icon/apple.png',
+                            text: 'apple',
+                            ontap: () {}),
                         const SizedBox(height: 40),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
