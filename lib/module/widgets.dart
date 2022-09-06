@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_firebase/module/extension.dart';
+import 'extension.dart';
 
 class ContinueWithButton extends StatelessWidget {
   final String iconAddres;

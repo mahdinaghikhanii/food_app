@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-import 'package:food_firebase/pages/letsyouin_page.dart';
-import 'package:food_firebase/theme/config_theme.dart';
+import 'pages/letsyouin_page.dart';
+import 'theme/config_theme.dart';
 
 import 'firebase_options.dart';
 

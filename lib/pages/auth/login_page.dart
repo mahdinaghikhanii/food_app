@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:food_firebase/module/extension.dart';
-import 'package:food_firebase/pages/auth/register_page.dart';
+import '../../module/extension.dart';
+import 'register_page.dart';
 
 import '../../module/widgets.dart';
 

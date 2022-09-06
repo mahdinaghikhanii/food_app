@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:food_firebase/module/extension.dart';
-import 'package:food_firebase/module/widgets.dart';
-import 'package:food_firebase/pages/auth/login_page.dart';
+import '../../module/extension.dart';
+import '../../module/widgets.dart';
+import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
