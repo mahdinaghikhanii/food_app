@@ -73,7 +73,7 @@ class OnBoardPage extends StatelessWidget {
       pages: [
         PageViewModel(
           image: Image.asset('assets/img/food.png',
-              fit: BoxFit.contain, height: 300),
+              fit: BoxFit.contain, height: 280),
           body: "Freedom talk to any person with assured privacy",
           title: "Order for Food",
           decoration: PageDecoration(

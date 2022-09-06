@@ -1,4 +1,6 @@
+// ignore_for_file: unnecessary_null_comparison
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:food_firebase/services/database_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../firebase_options.dart';
@@ -20,7 +22,7 @@ class AuthServices {
 
         final User user =
             (await _firebaseAuth.signInWithCredential(userCredential)).user!;
-        print("signed in  ${user.displayName}");
+
         return user;
       } else {
         throw FirebaseAuthException(
@@ -29,9 +31,30 @@ class AuthServices {
     }
   }
 
-  Future<void> singOut() async {
-    final googleSignIn = GoogleSignIn();
-    await googleSignIn.signOut();
-    await _firebaseAuth.signOut();
+  Future registerUserWithEmailAndPassword(
+      String email, String password, String fullname) async {
+    try {
+      User user = (await _firebaseAuth.signInWithEmailAndPassword(
+              email: email, password: password))
+          .user!;
+      if (user != null) {
+        DatabaseService(uid: _firebaseAuth.currentUser!.uid)
+            .saveUserDataAbout(fullname, email);
+        return true;
+      }
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+
+  Future singOut() async {
+    try {
+      final googleSignIn = GoogleSignIn();
+      await googleSignIn.signOut();
+      await _firebaseAuth.signOut();
+      return true;
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
   }
 }

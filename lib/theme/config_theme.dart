@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ConfigTheme {
   ThemeData themeData() {
     return ThemeData(
+        inputDecorationTheme: const InputDecorationTheme(),
         dividerColor: Colors.grey.shade400.withOpacity(0.9),
         appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,

@@ -16,11 +16,12 @@ class ContinueWithButton extends StatelessWidget {
     return GestureDetector(
       onTap: ontap,
       child: Container(
+        padding: const EdgeInsets.all(5),
         width: double.infinity,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             border: Border.all(color: Colors.grey.shade300.withOpacity(0.8))),
-        height: 60,
+        height: 55,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -79,16 +80,23 @@ class MEditFile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FocusNode myFocusNode = FocusNode();
     return TextFormField(
+        focusNode: FocusNode(),
         style: const TextStyle(fontSize: 18, color: Colors.grey),
         onChanged: onChanged,
         validator: validator,
         decoration: InputDecoration(
           prefixIcon: iconData,
+          prefixIconColor: myFocusNode.hasFocus
+              ? Theme.of(context).primaryColor
+              : Colors.grey.withOpacity(0.9),
           fillColor: Colors.grey.withOpacity(0.1),
           filled: true,
           enabled: true,
           focusedBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: Theme.of(context).primaryColor, width: 2),
             borderRadius: BorderRadius.circular(15),
           ),
           enabledBorder: OutlineInputBorder(

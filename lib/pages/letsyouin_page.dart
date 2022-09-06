@@ -36,29 +36,30 @@ class LetsYouIm extends StatelessWidget {
                         Center(
                           child: LottieBuilder.asset(
                               'assets/lottie/welcome.json',
-                              width: 250,
-                              height: 250),
+                              width: 230,
+                              height: 230),
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 20),
                         Text(
                           'Let\'s you in',
                           style: context.textStyle.titleLarge!
-                              .copyWith(fontSize: 38),
+                              .copyWith(fontSize: 36),
                         ),
                         const SizedBox(height: 30),
                         ContinueWithButton(
                             iconAddres: 'assets/icon/google.png',
                             text: 'Google',
                             ontap: () {
-                              AuthServices().signInWithGoogle().then((value) =>
-                                  context.nextPageAndRep(const HomePage()));
+                              AuthServices().signInWithGoogle().then((value) {
+                                context.nextPageAndRep(const HomePage());
+                              });
                             }),
                         const SizedBox(height: 15),
                         ContinueWithButton(
                             iconAddres: 'assets/icon/apple.png',
                             text: 'apple',
                             ontap: () {}),
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 30),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -75,6 +76,7 @@ class LetsYouIm extends StatelessWidget {
                         )
                       ],
                     ),
+                    const SizedBox(height: 10),
                     Column(
                       children: [
                         DoneButton(
@@ -101,7 +103,7 @@ class LetsYouIm extends StatelessWidget {
                             )
                           ],
                         ),
-                        const SizedBox(height: 10)
+                        const SizedBox(height: 20)
                       ],
                     )
                   ],
