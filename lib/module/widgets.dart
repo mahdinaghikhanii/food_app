@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'extension.dart';
 
 class ContinueWithButton extends StatelessWidget {
@@ -69,28 +70,27 @@ class DoneButton extends StatelessWidget {
 class MEditFile extends StatelessWidget {
   final String hintText;
   final Icon iconData;
-  final Function(String? val) onChanged;
+  final TextEditingController controller;
+  final Function(String val) onChanged;
   final String? Function(String? onChange)? validator;
   const MEditFile(
       {super.key,
       required this.onChanged,
-      required this.validator,
       required this.hintText,
+      required this.controller,
+      this.validator,
       required this.iconData});
 
   @override
   Widget build(BuildContext context) {
-    FocusNode myFocusNode = FocusNode();
     return TextFormField(
-        focusNode: FocusNode(),
+        controller: controller,
         style: const TextStyle(fontSize: 18, color: Colors.grey),
         onChanged: onChanged,
         validator: validator,
         decoration: InputDecoration(
           prefixIcon: iconData,
-          prefixIconColor: myFocusNode.hasFocus
-              ? Theme.of(context).primaryColor
-              : Colors.grey.withOpacity(0.9),
+          prefixIconColor: Colors.grey.withOpacity(0.9),
           fillColor: Colors.grey.withOpacity(0.1),
           filled: true,
           enabled: true,

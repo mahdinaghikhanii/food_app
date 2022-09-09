@@ -17,14 +17,10 @@ class OnBoardPage extends StatelessWidget {
       done: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text('done',
-            style:
-                context.textStyle.labelMedium!.copyWith(color: Colors.white)),
+            style: context.textStyle.labelMedium!
+                .copyWith(color: Colors.black, fontSize: 14)),
       ),
 
-      doneStyle: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.all<Color>(const Color(0xFF3AA63F)),
-      ),
       //doneStyle: ButtonStyle(),
 
       //rtl: true, // Display as right-to-left
@@ -39,16 +35,13 @@ class OnBoardPage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Text(
           "Next",
-          style: context.textStyle.labelMedium!.copyWith(color: Colors.white),
+          style: context.textStyle.labelMedium!
+              .copyWith(color: Colors.black, fontSize: 14),
         ),
       ),
-      nextStyle: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all<Color>(const Color(0xFF3AA63F))),
 
       skipStyle: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all<Color>(const Color(0xFF3AA63F))),
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.white)),
       showNextButton: true,
       dotsDecorator: const DotsDecorator(
         size: Size(10.0, 10.0),
@@ -67,7 +60,8 @@ class OnBoardPage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Text(
           'Skip',
-          style: context.textStyle.labelMedium!.copyWith(color: Colors.white),
+          style: context.textStyle.labelMedium!
+              .copyWith(color: Colors.black, fontSize: 14),
         ),
       ),
       pages: [

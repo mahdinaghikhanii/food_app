@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:food_firebase/provider/validation/register_validation.dart';
+import 'package:provider/provider.dart';
 import '../../module/extension.dart';
 import 'register_page.dart';
 
 import '../../module/widgets.dart';
+
+TextEditingController _email = TextEditingController();
+TextEditingController _password = TextEditingController();
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final loginValidation = Provider.of<RegisterValidation>(context);
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -40,29 +46,21 @@ class LoginPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
                     MEditFile(
-                      onChanged: (val) {},
-                      validator: (val) {
-                        return RegExp(
-                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                .hasMatch(val!)
-                            ? null
-                            : "Please enter a valid email";
+                      onChanged: (val) {
+                        loginValidation.changeEmail(val.toString().trim());
                       },
                       hintText: 'Email',
                       iconData: const Icon(Icons.email),
+                      controller: _email,
                     ),
                     const SizedBox(height: 15),
                     MEditFile(
-                      onChanged: (val) {},
-                      validator: (val) {
-                        if (val!.length < 6) {
-                          return "password must be at least 6 characters";
-                        } else {
-                          return null;
-                        }
+                      onChanged: (val) {
+                        loginValidation.changePassword(val.toString().trim());
                       },
                       hintText: 'Password',
                       iconData: const Icon(Icons.password),
+                      controller: _password,
                     ),
                     const SizedBox(height: 40),
                     DoneButton(text: "Sign ip", ontap: () {}),
