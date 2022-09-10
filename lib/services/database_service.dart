@@ -11,4 +11,10 @@ class DatabaseService {
         .doc(uid)
         .set({"fullName": fullName, "email": email, "uid": uid});
   }
+
+  Future getingUserData(String email) async {
+    QuerySnapshot querySnapshot =
+        await userCollection.where("email", isEqualTo: email).get();
+    return querySnapshot;
+  }
 }
