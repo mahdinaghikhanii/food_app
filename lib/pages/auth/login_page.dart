@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_firebase/provider/auth_provider.dart';
+import '../../provider/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../module/extension.dart';
@@ -16,7 +16,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final login = Provider.of<AuthProvider>(context);
+    final key = GlobalKey<FormState>();
     return Scaffold(
+        key: key,
         appBar: AppBar(
           elevation: 0,
           leading: GestureDetector(
@@ -60,7 +62,16 @@ class LoginPage extends StatelessWidget {
                       controller: _password,
                     ),
                     const SizedBox(height: 40),
-                    login.loading  ? DoneButton(text: "Sign in", ontap: () {}) :  ,
+                    login.loading == false
+                        ? DoneButton(
+                            text: "Sign in",
+                            ontap: () {
+                              if (key.currentState!.validate()) {
+                                login.loginUserWithEmailAndPassword(
+                                    context, _email.text, _password.text);
+                              }
+                            })
+                        : const MLoading(),
                     const SizedBox(height: 50),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

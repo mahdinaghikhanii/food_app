@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_firebase/helper/helper_function.dart';
-import 'package:food_firebase/pages/home_page.dart';
-import 'package:food_firebase/services/auth_service.dart';
+import '../../provider/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../module/extension.dart';
 import '../../module/widgets.dart';
@@ -15,6 +14,7 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final register = Provider.of<AuthProvider>(context);
     final fromKey = GlobalKey<FormState>();
 
     return Scaffold(
@@ -85,13 +85,19 @@ class RegisterPage extends StatelessWidget {
                   controller: _password,
                 ),
                 const SizedBox(height: 40),
-                DoneButton(
-                    text: "Sign ip",
-                    ontap: () {
-                      if (fromKey.currentState!.validate()) {
-                        signupUser(context);
-                      }
-                    }),
+                register.loading == false
+                    ? DoneButton(
+                        text: "Sign ip",
+                        ontap: () {
+                          if (fromKey.currentState!.validate()) {
+                            register.createUserWithEmailAndPasswordAndFullname(
+                                context,
+                                _email.text,
+                                _password.text,
+                                _fullname.text);
+                          }
+                        })
+                    : const MLoading(),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -142,27 +148,5 @@ class RegisterPage extends StatelessWidget {
             ),
           ),
         ));
-  }
-
-  void signupUser(context) async {
-    AuthServices()
-        .registerUserWithEmailAndPassword(
-            _email.text, _password.text, _fullname.text)
-        .then((value) async {
-      if (value == true) {
-        context.nextPageAndRep(const HomePage());
-        await HelperFunction.saveUserLogged(true);
-        await HelperFunction.saveEmail(_email.text);
-        await HelperFunction.saveUserName(_fullname.text);
-        _email.clear();
-        _fullname.clear();
-        _password.clear();
-      } else {
-        showSnackbar(context, Colors.red, value);
-        _email.clear();
-        _fullname.clear();
-        _password.clear();
-      }
-    });
   }
 }

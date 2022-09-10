@@ -160,7 +160,7 @@ class MLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: LoadingAnimationWidget.discreteCircle(
-          color: Colors.white, size: size ?? 60),
+          color: Theme.of(context).primaryColor, size: size ?? 60),
     );
   }
 }

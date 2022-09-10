@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-import 'package:food_firebase/provider/auth_provider.dart';
+import 'helper/helper_function.dart';
+import 'pages/home_page.dart';
+import 'provider/auth_provider.dart';
 
 import 'package:provider/provider.dart';
+
 import 'pages/onboard_page.dart';
 import 'theme/config_theme.dart';
 
@@ -11,12 +14,21 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  bool logged = false;
+
+  HelperFunction.getUserLogged().then((value) {
+    if (value != null) {
+      logged = value;
+    }
+  });
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  runApp(MyApp(isSignedIn: logged));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isSignedIn;
+  const MyApp({super.key, required this.isSignedIn});
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -28,7 +40,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ConfigTheme().themeData(),
-          home: const OnBoardPage()),
+          home: isSignedIn == false ? const OnBoardPage() : const HomePage()),
     );
   }
 }
