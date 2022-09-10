@@ -15,7 +15,7 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _fromKey = GlobalKey<FormState>();
+    final fromKey = GlobalKey<FormState>();
 
     return Scaffold(
         appBar: AppBar(
@@ -28,7 +28,7 @@ class RegisterPage extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
-            key: _fromKey,
+            key: fromKey,
             child: ListView(
               children: [
                 Center(
@@ -88,7 +88,7 @@ class RegisterPage extends StatelessWidget {
                 DoneButton(
                     text: "Sign ip",
                     ontap: () {
-                      if (_fromKey.currentState!.validate()) {
+                      if (fromKey.currentState!.validate()) {
                         signupUser(context);
                       }
                     }),
@@ -148,14 +148,20 @@ class RegisterPage extends StatelessWidget {
     AuthServices()
         .registerUserWithEmailAndPassword(
             _email.text, _password.text, _fullname.text)
-        .then((value) {
+        .then((value) async {
       if (value == true) {
         context.nextPageAndRep(const HomePage());
-        HelperFunction.saveUserLogged(true);
-        HelperFunction.saveEmail(_email.text);
-        HelperFunction.saveUserName(_fullname.text);
+        await HelperFunction.saveUserLogged(true);
+        await HelperFunction.saveEmail(_email.text);
+        await HelperFunction.saveUserName(_fullname.text);
+        _email.clear();
+        _fullname.clear();
+        _password.clear();
       } else {
         showSnackbar(context, Colors.red, value);
+        _email.clear();
+        _fullname.clear();
+        _password.clear();
       }
     });
   }

@@ -46,6 +46,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+2
   introduction_screen: ^3.0.2
   google_sign_in: ^5.4.1
+  
 
 dev_dependencies:
   flutter_test:

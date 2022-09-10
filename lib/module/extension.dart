@@ -12,6 +12,7 @@ extension BuildExtension on BuildContext {
   }
 
   void nextPageAndRep(Widget child) {
-    Navigator.push(this, MaterialPageRoute(builder: (context) => child));
+    Navigator.pushReplacement(
+        this, MaterialPageRoute(builder: (context) => child));
   }
 }
