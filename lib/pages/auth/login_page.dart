@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_firebase/provider/validation/register_validation.dart';
-import 'package:provider/provider.dart';
+
 import '../../module/extension.dart';
 import 'register_page.dart';
 
@@ -14,7 +13,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginValidation = Provider.of<RegisterValidation>(context);
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -46,18 +44,14 @@ class LoginPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
                     MEditFile(
-                      onChanged: (val) {
-                        loginValidation.changeEmail(val.toString().trim());
-                      },
+                      onChanged: (val) {},
                       hintText: 'Email',
                       iconData: const Icon(Icons.email),
                       controller: _email,
                     ),
                     const SizedBox(height: 15),
                     MEditFile(
-                      onChanged: (val) {
-                        loginValidation.changePassword(val.toString().trim());
-                      },
+                      onChanged: (val) {},
                       hintText: 'Password',
                       iconData: const Icon(Icons.password),
                       controller: _password,

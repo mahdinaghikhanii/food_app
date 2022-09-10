@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:food_firebase/helper/helper_function.dart';
 import 'package:food_firebase/pages/home_page.dart';
 import 'package:food_firebase/services/auth_service.dart';
-import 'package:provider/provider.dart';
 
 import '../../module/extension.dart';
 import '../../module/widgets.dart';
-import '../../provider/validation/register_validation.dart';
 
 TextEditingController _fullname = TextEditingController();
 TextEditingController _email = TextEditingController();
@@ -16,8 +15,7 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final registerValidation =
-        Provider.of<RegisterValidation>(context, listen: false);
+    final _fromKey = GlobalKey<FormState>();
 
     return Scaffold(
         appBar: AppBar(
@@ -53,9 +51,7 @@ class RegisterPage extends StatelessWidget {
                       return "name cannot be empty";
                     }
                   },
-                  onChanged: (val) {
-                    registerValidation.setFullname(val.toString());
-                  },
+                  onChanged: (val) {},
                   hintText: 'Full name',
                   iconData: const Icon(Icons.person),
                   controller: _fullname,
@@ -69,9 +65,7 @@ class RegisterPage extends StatelessWidget {
                         ? null
                         : "Please enter a valid email";
                   },
-                  onChanged: (val) {
-                    registerValidation.setEmail(val.toString());
-                  },
+                  onChanged: (val) {},
                   hintText: 'Email',
                   iconData: const Icon(Icons.email),
                   controller: _email,
@@ -85,9 +79,7 @@ class RegisterPage extends StatelessWidget {
                       return null;
                     }
                   },
-                  onChanged: (val) {
-                    registerValidation.setPassword(val.toString());
-                  },
+                  onChanged: (val) {},
                   hintText: 'Password',
                   iconData: const Icon(Icons.password),
                   controller: _password,
@@ -97,16 +89,7 @@ class RegisterPage extends StatelessWidget {
                     text: "Sign ip",
                     ontap: () {
                       if (_fromKey.currentState!.validate()) {
-                        AuthServices()
-                            .registerUserWithEmailAndPassword(
-                                _email.text, _password.text, _fullname.text)
-                            .then((value) {
-                          if (value == true) {
-                            context.nextPage(const HomePage());
-                          } else {
-                            showSnackbar(context, Colors.red, value);
-                          }
-                        });
+                        signupUser(context);
                       }
                     }),
                 const SizedBox(height: 30),
@@ -159,5 +142,21 @@ class RegisterPage extends StatelessWidget {
             ),
           ),
         ));
+  }
+
+  void signupUser(context) async {
+    AuthServices()
+        .registerUserWithEmailAndPassword(
+            _email.text, _password.text, _fullname.text)
+        .then((value) {
+      if (value == true) {
+        context.nextPageAndRep(const HomePage());
+        HelperFunction.saveUserLogged(true);
+        HelperFunction.saveEmail(_email.text);
+        HelperFunction.saveUserName(_fullname.text);
+      } else {
+        showSnackbar(context, Colors.red, value);
+      }
+    });
   }
 }
