@@ -12,6 +12,11 @@ class ConfigTheme {
         primaryColor: const Color(0xFF3AA63F),
         scaffoldBackgroundColor: Colors.white,
         textTheme: const TextTheme(
+            bodySmall: TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                fontFamily: "Montserrat"),
             labelLarge: TextStyle(
                 color: Colors.white,
                 fontSize: 23,
