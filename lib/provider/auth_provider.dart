@@ -56,5 +56,6 @@ class AuthProvider with ChangeNotifier {
         showSnackbar(context, Colors.red, value);
       }
     });
+    notifyListeners();
   }
 }

@@ -11,6 +11,7 @@ class UserDataProvider with ChangeNotifier {
   getUserDataPerfs() async {
     HelperFunction.getUsername().then((value) {
       _fullname = value!;
+      notifyListeners();
     });
     HelperFunction.getUserEmail().then((value) {
       _emailAddres = value!;

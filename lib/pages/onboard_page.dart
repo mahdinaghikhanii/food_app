@@ -66,7 +66,7 @@ class OnBoardPage extends StatelessWidget {
       ),
       pages: [
         PageViewModel(
-          image: Image.asset('assets/img/food.png',
+          image: Image.asset('assets/img/onboard/food.png',
               fit: BoxFit.contain, height: 280),
           body: "Freedom talk to any person with assured privacy",
           title: "Order for Food",
@@ -76,7 +76,7 @@ class OnBoardPage extends StatelessWidget {
           // title:
         ),
         PageViewModel(
-            image: Image.asset("assets/img/payment.png", height: 300),
+            image: Image.asset("assets/img/onboard/payment.png", height: 300),
             body:
                 "Send text, images, videos and even documents to your friends",
             title: "Easy Payment",
@@ -84,7 +84,7 @@ class OnBoardPage extends StatelessWidget {
                 titleTextStyle: context.textStyle.titleLarge!
                     .copyWith(color: const Color(0xFF3AA63F)))),
         PageViewModel(
-          image: Image.asset("assets/img/delivery.png", height: 400),
+          image: Image.asset("assets/img/onboard/delivery.png", height: 400),
           body: "Fast Delivery",
           title: "Fast Delivery",
           decoration: PageDecoration(
