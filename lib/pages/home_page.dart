@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../model/category_model.dart';
 import '../module/extension.dart';
@@ -133,6 +134,19 @@ class HomePage extends StatelessWidget {
                       itemBuilder: ((context, index) {
                         return const DiscountIteams();
                       })),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child:
+                      SubTitle(title: 'Recommended For You 😍', ontap: () {})),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 60,
+                  child: BuildChip(),
                 ),
               )
             ],

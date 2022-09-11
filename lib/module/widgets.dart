@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_firebase/model/category_model.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import 'extension.dart';
@@ -302,6 +303,53 @@ class DiscountIteams extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class BuildChip extends StatelessWidget {
+  const BuildChip({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    List<CategoryModel> choice = [
+      CategoryModel("assets/img/done.png", "All"),
+      CategoryModel("assets/img/burger.png", "Burger"),
+      CategoryModel("assets/img/drink.png", "Drink"),
+      CategoryModel("assets/img/helthe.png", "Vegan"),
+      CategoryModel("assets/img/spageti.png", "spageti"),
+      CategoryModel("assets/img/icons8-cake-48.png", "Dessert"),
+      CategoryModel("assets/img/pitzza.png", "Pizza"),
+      CategoryModel("assets/img/noodles.png", "Noodles"),
+      CategoryModel("assets/img/more.png", "More"),
+    ];
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: choice.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            padding: const EdgeInsets.only(right: 5, left: 5),
+            child: ChoiceChip(
+              avatar: Image.asset(choice[index].imgAddres),
+              backgroundColor: Colors.white,
+              label: Text(choice[index].name,
+                  style: context.textStyle.titleLarge!.copyWith(fontSize: 16)),
+              selectedColor: Theme.of(context).primaryColor,
+              //     selected: choiceProvider.currentIndexBuildChip == index,
+              selected: false,
+              onSelected: (value) {
+                //  choiceProvider.setcurrentIndexBuildChip(index, value);
+                1 == value;
+              },
+            ),
+          );
+        },
       ),
     );
   }
