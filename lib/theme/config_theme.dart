@@ -11,6 +11,11 @@ class ConfigTheme {
             iconTheme: IconThemeData(color: Colors.black)),
         primaryColor: const Color(0xFF3AA63F),
         scaffoldBackgroundColor: Colors.white,
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            unselectedItemColor: Colors.grey,
+            unselectedLabelStyle: TextStyle(
+              color: Colors.red,
+            )),
         textTheme: const TextTheme(
             bodySmall: TextStyle(
                 color: Colors.black,

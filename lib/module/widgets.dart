@@ -342,7 +342,6 @@ class BuildChip extends StatelessWidget {
               selected: false,
               onSelected: (value) {
                 //  choiceProvider.setcurrentIndexBuildChip(index, value);
-                1 == value;
               },
             ),
           );
@@ -358,7 +357,7 @@ class RecommendedForYouIteam extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
