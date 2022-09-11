@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../provider/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../module/extension.dart';
 import '../../module/widgets.dart';
+import '../../provider/auth_provider.dart';
 
 TextEditingController _fullname = TextEditingController();
 TextEditingController _email = TextEditingController();

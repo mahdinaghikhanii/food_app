@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_firebase/model/category_model.dart';
-import 'package:food_firebase/module/extension.dart';
-import 'package:food_firebase/module/widgets.dart';
+import '../model/category_model.dart';
+import '../module/extension.dart';
+import '../module/widgets.dart';
 
-import 'package:food_firebase/provider/userdata_provier.dart';
+import '../provider/userdata_provier.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -76,52 +76,64 @@ class HomePage extends StatelessWidget {
             },
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
-              MEditFile(
-                  onChanged: (va) {},
-                  hintText: "What are you craving?",
-                  controller: search,
-                  iconData: const Icon(Icons.search)),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  Text(
-                    'Special offers',
-                    style: context.textStyle.titleLarge!.copyWith(fontSize: 16),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'See All',
-                    style: context.textStyle.titleLarge!.copyWith(
-                        fontSize: 15, color: Theme.of(context).primaryColor),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: MEditFile(
+                    onChanged: (va) {},
+                    hintText: "What are you craving?",
+                    controller: search,
+                    iconData: const Icon(Icons.search)),
               ),
               const SizedBox(height: 20),
-              SizedBox(
-                height: 300,
-                width: double.infinity,
-                child: GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            mainAxisSpacing: 20,
-                            crossAxisSpacing: 30,
-                            crossAxisCount: 4),
-                    itemCount: category.length,
-                    itemBuilder: ((context, index) {
-                      return Column(
-                        children: [
-                          Image.asset(category[index].imgAddres),
-                          Text(category[index].name)
-                        ],
-                      );
-                    })),
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: SubTitle(title: 'Special offers', ontap: () {})),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: SizedBox(
+                  height: 200,
+                  width: double.infinity,
+                  child: GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              mainAxisSpacing: 20,
+                              crossAxisSpacing: 15,
+                              crossAxisCount: 4),
+                      itemCount: category.length,
+                      itemBuilder: ((context, index) {
+                        return Column(
+                          children: [
+                            Image.asset(category[index].imgAddres),
+                            const SizedBox(height: 8),
+                            Text(category[index].name),
+                          ],
+                        );
+                      })),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: SubTitle(title: 'Discount Guaranteed! 👌', ontap: () {}),
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 290,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: ((context, index) {
+                        return const DiscountIteams();
+                      })),
+                ),
               )
             ],
           ),

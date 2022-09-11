@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart' show Firebase;
@@ -12,17 +14,27 @@ import 'pages/onboard_page.dart';
 import 'theme/config_theme.dart';
 
 import 'firebase_options.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart'
+    show FlutterNativeSplash;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   bool logged = false;
   HelperFunction.getUserLogged().then((value) {
     if (value != null) {
       logged = value;
     }
   });
+  //FlutterNativeSplash.remove();
+  FlutterNativeSplash.removeAfter(ini);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(MyApp(isSignedIn: logged));
+}
+
+Future ini(BuildContext? context) async {
+  await Future.delayed(const Duration(seconds: 2));
 }
 
 class MyApp extends StatelessWidget {

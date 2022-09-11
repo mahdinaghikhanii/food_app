@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_firebase/helper/helper_function.dart';
+import '../helper/helper_function.dart';
 
 class UserDataProvider with ChangeNotifier {
   String _fullname = '';
