@@ -115,6 +115,26 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Theme.of(context).primaryColor,
+                        spreadRadius: 1,
+                        blurRadius: 8,
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Image.asset('assets/img/off.png'),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: SizedBox(
                   height: 200,
                   width: double.infinity,
