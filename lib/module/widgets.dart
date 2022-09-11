@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_firebase/model/category_model.dart';
+import '../model/category_model.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import 'extension.dart';
@@ -213,95 +213,92 @@ class DiscountIteams extends StatelessWidget {
                 offset: const Offset(1, 0)),
           ],
         ),
-        child: Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Container(
-                    clipBehavior: Clip.hardEdge,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(16)),
-                    child: Image.asset(
-                      "assets/img/fish.png",
-                      fit: BoxFit.cover,
-                      height: 160,
-                      width: double.infinity,
-                    ),
-                  )),
-              const SizedBox(height: 5),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text("Soshi",
-                    textAlign: TextAlign.left,
-                    overflow: TextOverflow.ellipsis,
-                    style:
-                        context.textStyle.titleLarge!.copyWith(fontSize: 16)),
-              ),
-              const SizedBox(height: 5),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: IntrinsicHeight(
-                  child: Row(
-                    children: [
-                      Text('1.5 km',
-                          style: context.textStyle.bodySmall!.copyWith(
-                              fontSize: 10, color: Colors.grey.shade700)),
-                      VerticalDivider(
-                          thickness: 1,
-                          endIndent: 2,
-                          indent: 2,
-                          width: 10,
-                          color: Colors.grey.shade700),
-                      const Icon(Icons.star, size: 16, color: Colors.orange),
-                      const SizedBox(width: 5),
-                      Text('4.8',
-                          style: context.textStyle.bodySmall!.copyWith(
-                              fontSize: 10, color: Colors.grey.shade700)),
-                      const SizedBox(width: 5),
-                      Text("(1.2k)",
-                          style: context.textStyle.bodySmall!.copyWith(
-                              fontSize: 10, color: Colors.grey.shade700)),
-                    ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+                padding: const EdgeInsets.all(10),
+                child: Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(16)),
+                  child: Image.asset(
+                    "assets/img/fish.png",
+                    fit: BoxFit.cover,
+                    height: 160,
+                    width: double.infinity,
                   ),
+                )),
+            const SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text("Soshi",
+                  textAlign: TextAlign.left,
+                  overflow: TextOverflow.ellipsis,
+                  style: context.textStyle.titleLarge!.copyWith(fontSize: 16)),
+            ),
+            const SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: IntrinsicHeight(
+                child: Row(
+                  children: [
+                    Text('1.5 km',
+                        style: context.textStyle.bodySmall!.copyWith(
+                            fontSize: 10, color: Colors.grey.shade700)),
+                    VerticalDivider(
+                        thickness: 1,
+                        endIndent: 2,
+                        indent: 2,
+                        width: 10,
+                        color: Colors.grey.shade700),
+                    const Icon(Icons.star, size: 16, color: Colors.orange),
+                    const SizedBox(width: 5),
+                    Text('4.8',
+                        style: context.textStyle.bodySmall!.copyWith(
+                            fontSize: 10, color: Colors.grey.shade700)),
+                    const SizedBox(width: 5),
+                    Text("(1.2k)",
+                        style: context.textStyle.bodySmall!.copyWith(
+                            fontSize: 10, color: Colors.grey.shade700)),
+                  ],
                 ),
               ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: IntrinsicHeight(
-                  child: Row(
-                    children: [
-                      Text('\$6.00',
-                          style: context.textStyle.titleLarge!.copyWith(
-                              fontSize: 16,
-                              color: Theme.of(context).primaryColor)),
-                      VerticalDivider(
-                          thickness: 1,
-                          endIndent: 6,
-                          indent: 6,
-                          width: 10,
-                          color: Colors.grey.shade700),
-                      Icon(Icons.motorcycle,
-                          color: Theme.of(context).primaryColor, size: 18),
-                      const SizedBox(width: 5),
-                      Text("\$2.00",
-                          overflow: TextOverflow.ellipsis,
-                          style: context.textStyle.bodySmall!.copyWith(
-                              fontSize: 10, color: Colors.grey.shade700)),
-                      const Spacer(),
-                      const Icon(
-                        Icons.favorite_border,
-                        size: 20,
-                        color: Colors.red,
-                      )
-                    ],
-                  ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: IntrinsicHeight(
+                child: Row(
+                  children: [
+                    Text('\$6.00',
+                        style: context.textStyle.titleLarge!.copyWith(
+                            fontSize: 16,
+                            color: Theme.of(context).primaryColor)),
+                    VerticalDivider(
+                        thickness: 1,
+                        endIndent: 6,
+                        indent: 6,
+                        width: 10,
+                        color: Colors.grey.shade700),
+                    Icon(Icons.motorcycle,
+                        color: Theme.of(context).primaryColor, size: 18),
+                    const SizedBox(width: 5),
+                    Text("\$2.00",
+                        overflow: TextOverflow.ellipsis,
+                        style: context.textStyle.bodySmall!.copyWith(
+                            fontSize: 10, color: Colors.grey.shade700)),
+                    const Spacer(),
+                    const Icon(
+                      Icons.favorite_border,
+                      size: 20,
+                      color: Colors.red,
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -350,6 +347,110 @@ class BuildChip extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class RecommendedForYouIteam extends StatelessWidget {
+  const RecommendedForYouIteam({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white.withOpacity(0.9),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 2,
+                offset: const Offset(1, 0)),
+          ],
+        ),
+        height: 150,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              clipBehavior: Clip.hardEdge,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(16)),
+              child: Image.asset(
+                "assets/img/fish.png",
+                fit: BoxFit.cover,
+                height: 120,
+                width: 140,
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                  child: Text("Soshi",
+                      textAlign: TextAlign.left,
+                      overflow: TextOverflow.ellipsis,
+                      style:
+                          context.textStyle.titleLarge!.copyWith(fontSize: 16)),
+                ),
+                IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      const SizedBox(width: 10),
+                      Text('1.5 km',
+                          style: context.textStyle.bodySmall!.copyWith(
+                              fontSize: 12, color: Colors.grey.shade700)),
+                      VerticalDivider(
+                          thickness: 1,
+                          endIndent: 2,
+                          indent: 2,
+                          width: 10,
+                          color: Colors.grey.shade700),
+                      const Icon(Icons.star, size: 18, color: Colors.orange),
+                      const SizedBox(width: 5),
+                      Text('4.8',
+                          style: context.textStyle.bodySmall!.copyWith(
+                              fontSize: 12, color: Colors.grey.shade700)),
+                      const SizedBox(width: 5),
+                      Text("(1.2k)",
+                          style: context.textStyle.bodySmall!.copyWith(
+                              fontSize: 12, color: Colors.grey.shade700)),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    const SizedBox(width: 10),
+                    Row(
+                      children: [
+                        Icon(Icons.motorcycle,
+                            color: Theme.of(context).primaryColor, size: 20),
+                        const SizedBox(width: 5),
+                        Text("\$2.00",
+                            overflow: TextOverflow.ellipsis,
+                            style: context.textStyle.bodySmall!.copyWith(
+                                fontSize: 12, color: Colors.grey.shade700)),
+                      ],
+                    ),
+                    const Icon(
+                      Icons.favorite_border,
+                      size: 22,
+                      color: Colors.red,
+                    )
+                  ],
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

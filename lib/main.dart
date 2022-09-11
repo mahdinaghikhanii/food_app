@@ -1,21 +1,18 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:flutter/material.dart';
-
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-import 'package:food_firebase/provider/userdata_provier.dart';
-import 'helper/helper_function.dart';
-import 'pages/home_page.dart';
-import 'provider/auth_provider.dart';
-
-import 'package:provider/provider.dart';
-
-import 'pages/onboard_page.dart';
-import 'theme/config_theme.dart';
-
-import 'firebase_options.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart'
     show FlutterNativeSplash;
+import 'package:food_firebase/provider/userdata_provier.dart';
+import 'package:provider/provider.dart';
+
+import 'firebase_options.dart';
+import 'helper/helper_function.dart';
+import 'pages/home_page.dart';
+import 'pages/onboard_page.dart';
+import 'provider/auth_provider.dart';
+import 'theme/config_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
